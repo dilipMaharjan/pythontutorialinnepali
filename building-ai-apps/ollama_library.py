@@ -4,13 +4,8 @@ import ollama
 
 MODEL="llama3.2"
 
-messages=[
-    {"role":"system", "content":"You are a helpful assistant that is really good at pickup lines. Respond in markdown format."},
-    {"role":"user", "content":"Tell me one liner pickup line."}
-]
-
-response=ollama.chat(messages=messages, model=MODEL, stream=False)
-print(response["message"]["content"],end='\n', flush=True)
+response=ollama.generate(prompt="Tell me one liner pickup line.", model=MODEL)
+print(response['response'],end='\n', flush=True)
 
 messages=[
     {"role":"system", "content":"You are a helpful assistant that provides information on business applications of AI. Respond in markdown format."},
